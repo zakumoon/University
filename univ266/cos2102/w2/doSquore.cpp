@@ -78,8 +78,6 @@ class Ractangle{
         }
 };
 
-
-
 // cout num cout
 int Ractangle::n;
 
@@ -90,6 +88,7 @@ void Ractangle::show(){
     cout<<" Width * lenght : "<< squareArea()<<endl;
     cout<<" Final : "<< squarefinal()<<endl;
     cout<<endl;
+
 }   
 
 
@@ -138,8 +137,4 @@ int main(){
     cout<<" getWidth: "<< a3.getWid() << endl;
     cout<<" getLength: "<< a3.getLen() << endl;
     a3.show();
-
-
-
-
 }
