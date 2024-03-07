@@ -21,7 +21,7 @@ class Point {
       set(xn, 0); 
     }
 
-    Point(float xn, float yn){  ////here it recive value from point a( x , x)
+    Point(float xn, float yn){
       set(xn, yn);
     }
 
@@ -35,7 +35,6 @@ class Point {
 
     float dot(Point &other) {
       float result = x * other.x + y * other.y;
-      //cout << "Dot Product: " << result << endl;
       return result;
     }
 
@@ -61,12 +60,9 @@ Point Point::midPoint(Point &xn, Point &yn) {
   std::cout << "Midpoint: (" << midX << ", " << midY << ")" << std::endl;
   return Point(midX, midY);
 }
-
-
 int main() {
   Point x;
   Point b(4.3, 65);
-
 
   cout << "Point a:" << endl;
   Point a(3, 5);
@@ -76,7 +72,6 @@ int main() {
   Point p(2, 2);
   cout<<a.dot(p)<<endl;
   
-
   x = p.midPoint(a, b);
   p.show();
 
@@ -84,7 +79,6 @@ int main() {
   x.midPoint(p, a);
 
   x.show();
-
 
   return 0;
 }

@@ -61,15 +61,14 @@ class Addr{
       return zip;
     }
 
-  ~Addr(){cout<< "Clas Address end~ " << endl;}
+  ~Addr(){
+    cout<< "Clas Address end~ " << endl;
+  }
 };
-class Person{
+class Person: public Birth, public Addr{
   string name;
   int age;
   public:
-
-  Birth *birth;
-  Addr *add;
 
     Person(){
       age = 0;
@@ -100,24 +99,25 @@ class Teacher: public Person{
     Teacher(){
       experience = 0;
     }
-     void setTeach(string nam, int nAge){
-        Person::set(nam, nAge);
+    void setTeach(string nam, int nAge){
+      Person::set(nam, nAge);
     }
-  void setExp(int nExp){
-    experience = nExp;
-  }
-  int getExp(){
-    return experience;
-  }
-  void show(){
-    cout<< "     ---------------Student--------------- \n";
-    cout<<"Your Name = " << getName()<<endl;
-    cout<<"Your Age = " << getAge()<<endl;
-    cout<<"Your Birth Date = " <<birth->getDay()<<"/"<<birth->getMonth()<<"/" <<birth->getYear()<<endl;
-    cout<<"Your Experience = " << getExp()<<endl;
-    cout<<"Your Address = "<<add->getRoad()<< " "<<add->getCity()<< " "<<add->getZip()<<endl; 
-    cout<<endl;
-  }
+    void setExp(int nExp){
+      experience = nExp;
+    }
+    int getExp(){
+      return experience;
+    }
+    void show(){
+      cout<<"Your Name = " << getName()<<endl;
+      cout<<"Your Age = " << getAge()<<endl;
+      cout<<"Your Birth Date = " <<getDay()<<"/"<<getMonth()<<"/" <<getYear()<<endl;
+      cout<<"Your Experience = " << getExp()<<endl;
+      cout<<"Your Address = "<<getRoad()<< " "<<getCity()<< " "<<getZip()<<endl; 
+      cout<< " ---------------End Student--------------- \n";
+
+      cout<<endl;
+    }
   ~Teacher(){
     cout<<"Teacher class end~ "<<endl;
   }
@@ -129,47 +129,42 @@ class Student: public Person{
     Student(){
       id = "T01";
     }
-     void setStudent(string nam, int nAge) {
-        Person::set(nam, nAge); // Call base class set function
+    void setStudent(string nam, int nAge) {
+      Person::set(nam, nAge); // Call base class set function
     }
     void setId(string nId){
       id = nId;
     }
-  string getId(){
-    return id;
-  }
-  void show(){
-    cout<< "     ---------------Student--------------- \n";
-    cout<<"Your Student ID Number = " << getId()<<endl;
-    cout<<"Your Name = " << getName()<<endl;
-    cout<<"Your Age = " << getAge()<<endl;
-    cout<<"Your Birth Date = " <<birth->getDay()<<"/"<<birth->getMonth()<<"/" <<birth->getYear()<<endl;
-    cout<<"Your Address = "<<add->getRoad()<< " "<<add->getCity()<< " "<<add->getZip()<<endl; 
-    cout<<endl;
-  }
+    string getId(){
+      return id;
+    }
+    void show(){
+      cout<<"Your Student ID Number = " << getId()<<endl;
+      cout<<"Your Name = " << getName()<<endl;
+      cout<<"Your Age = " << getAge()<<endl;
+      cout<<"Your Birth Date = " <<getDay()<<"/"<<getMonth()<<"/" <<getYear()<<endl;
+      cout<<"Your Address = "<<getRoad()<< " "<<getCity()<< " "<<getZip()<<endl; 
+      cout<< " ---------------End Teacher--------------- \n";
+
+      cout<<endl;
+    }
   ~Student(){
     cout<<"Teacher class end~ "<<endl;
   } 
-
 };
 
 int main(){
-    Birth *birth = new Birth();
-    Addr *address = new Addr();
     Teacher *teacher = new Teacher();
     Student *student = new Student();
 
-    birth->setBirth(14, 2, 1409);
-    address->setAddr(17, 80808, "Thung Song");
-
     teacher->setTeach("Mr.Bean", 22);
-    teacher->birth = birth;
-    teacher->add = address;
+    teacher->setBirth(14, 2, 1409);
+    teacher->setAddr(754, 80808, "Thung Song");
     teacher->setExp(10);
 
     student->setStudent("Jane Smith", 20);
-    student->birth = birth;
-    student->add = address;
+    student->setBirth(10, 12, 1509);
+    student->setAddr(381, 80345, "Surathani");
     student->setId("T105003221");
 
     cout << "Teacher's Information:" << endl;
@@ -178,51 +173,6 @@ int main(){
     cout << "Student's Information:" << endl;
     student->show();
 
-
-    delete birth;
-    delete address;
     delete teacher;
     delete student;
 }
-
-
-#if 0
-
-  void show(){
-    cout<< "     ---------------Teacher--------------- \n";
-    cout<<"Your Name = " << getName()<<endl;
-    cout<<"Your Age = " << getAge()<<endl;
-    cout<<"Your Birth Date = " <<getBirth()<<endl;
-    cout<<"Your Experiences by year = " << getExp()<<endl;
-    cout<<"Your Address = "<<getAddress()<<endl; 
-    cout<<endl;
-  }
-
-
-int main(){
-  Person p;
-  p.setPerson("2001/05/20", "Bangkok city");
-  //p.show();
-  Teacher t;
-  t.setTeacherInfo("Ms. Triphit", 36, 13);
-  t.show();
-  
-  Student s;
-  s.setStudentInfo("Praphan", 21, "ST104323234");
-  s.show();
-}
-
-
-int main(){
-  Person p;
-  p.setPerson("2001/05/20", " Bangkok city");
-  Teacher t;
-  t.setTeacherInfo("Ms. Triphit", 36, 13);
-  t.show();
-  Person nP;
-  nP.setPerson("1994/05/20", " Nakhon Si thammarat city");
-  Student s;
-  s.setStudentInfo("Praphan", 21, "ST104323234");
-  s.show();
-
-#endif

@@ -56,13 +56,10 @@ class Addr{
     }
   ~Addr(){cout<< "Clas Address end~ " << endl;}
 };
-class Person{
+class Person: public Birth, public Addr{
   string name;
   int age; 
   public: 
-
-  Birth *birth;
-  Addr *add;
 
    Person(){
       age = 656;
@@ -101,9 +98,9 @@ class Teacher: public Person{
     void show(){
       std::cout<<"Teacher Name = " <<getName()<<endl;
       std::cout<<"Teacher Age = " <<getAge()<<endl;
-      std::cout<<"Teacher Birth Date = " <<birth->getDay()<<"/"<<birth->getMonth()<<"/" <<birth->getYear()<<endl;
+      std::cout<<"Teacher Birth Date = " <<getDay()<<"/"<<getMonth()<<"/" <<getYear()<<endl;
       std::cout<<"Teacher Experience = " << getExp()<<endl;
-      std::cout<<"Teacher Address = "<<add->getRoad()<< " "<<add->getCity()<< " "<<add->getZip()<<endl; 
+      std::cout<<"Teacher Address = "<<getRoad()<< " "<<getCity()<< " "<<getZip()<<endl; 
       std::cout<< "--------------- Teacher End--------------- \n";
 
       std::cout<<endl;
@@ -132,8 +129,8 @@ class Student: public Person{
       std::cout<<"Student ID Number = " << getId()<<endl;
       std::cout<<"Student Name = " << getName()<<endl;
       std::cout<<"Student Age = " << getAge()<<endl;
-      std::cout<<"Teacher Birth Date = " <<birth->getDay()<<"/"<<birth->getMonth()<<"/" <<birth->getYear()<<endl;
-      std::cout<<"Teacher Address = "<<add->getRoad()<< " "<<add->getCity()<< " "<<add->getZip()<<endl;
+      std::cout<<"Teacher Birth Date = " <<getDay()<<"/"<<getMonth()<<"/" <<getYear()<<endl;
+      std::cout<<"Teacher Address = "<<getRoad()<< " "<<getCity()<< " "<<getZip()<<endl;
       std::cout<< "--------------- Student End--------------- \n";
 
       std::cout<<endl;
@@ -150,8 +147,8 @@ class Assistant: public Student, public Teacher{
       std::cout<<"Assistant Name = "<<Student::getName()<<endl;
       std::cout<<"Assistant Age = "<<Student::getAge()<<endl;
       std::cout<<"Assistant Experience = "<<Teacher::getExp()<<endl;
-      std::cout<<"Assistant Birth Date = "<<Teacher::birth->getDay()<<"/"<<Teacher::birth->getMonth()<<"/" <<Teacher::birth->getYear()<<endl;
-      std::cout<<"Assistant Address = "<<Teacher::add->getRoad()<< " "<<Teacher::add->getCity()<< " "<<Teacher::add->getZip()<<endl;
+      std::cout<<"Assistant Birth Date = "<<Teacher::getDay()<<"/"<<Teacher::getMonth()<<"/" <<Teacher::getYear()<<endl;
+      std::cout<<"Assistant Address = "<<Teacher::getRoad()<< " "<<Teacher::getCity()<< " "<<Teacher::getZip()<<endl;
       std::cout<< "--------------- Assistant End--------------- \n";
       std::cout<<endl;
     }
@@ -161,23 +158,19 @@ class Assistant: public Student, public Teacher{
 };
 
 int main(){
-/*     Birth *birt = new Birth();
-    Addr *address = new Addr(); */
     Teacher *teacher = new Teacher();
     Student *student = new Student();
     Assistant *assist = new Assistant();
 
-/*     birt->setB(14, 2, 1409);
-    address->setA(17, 80808, "Thung Song"); */
 
     teacher->setTeach("Mr.Bean", 22);
-    teacher->birth->setB(14, 2, 1409);
-    teacher->add->setA(754, 80808, "Thung Song");
+    teacher->setB(14, 2, 1409);
+    teacher->setA(754, 80808, "Thung Song");
     teacher->setExp(10);
 
     student->setStudent("Jane Smith", 20);
-    student->birth->setB(10, 12, 1509);
-    student->add->setA(381, 80345, "Surathani");
+    student->setB(10, 12, 1509);
+    student->setA(381, 80345, "Surathani");
     student->setId("T105003221");
 
     assist->setStudent("Limy Franz", 23);
@@ -190,9 +183,7 @@ int main(){
 
     cout << "Teacher's Assistance Information: "<<endl;
     assist->show();
-/* 
-    delete birt;
-    delete address; */
+
     delete teacher;
     delete student;
     delete assist;
