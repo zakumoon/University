@@ -56,13 +56,10 @@ class Addr{
     }
   ~Addr(){cout<< "Clas Address end~ " << endl;}
 };
-class Person{
+class Person: public Birth, public Addr{
   string name;
   int age; 
   public: 
-
-  Birth *birth;
-  Addr *add;
 
    Person(){
       age = 656;
