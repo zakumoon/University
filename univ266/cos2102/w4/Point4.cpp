@@ -38,7 +38,13 @@ class Point {
       return result;
     }
 
-    Point midPoint(Point &xn, Point &yn);
+    Point midPoint(Point &xn, Point &yn) {
+      float midX = (xn.x + yn.x) / 2;
+      float midY = (xn.y + yn.y) / 2;
+
+      Point midpoint(midX, midY);
+      return midpoint;
+    }
 
     void show() {
       cout << "X = " << getX() << endl;
@@ -47,29 +53,21 @@ class Point {
     }
 
     ~Point() {
-      cout << "Bye " << getX() << endl;
-      cout << "Bye " << getY() << endl;
+      cout<<"Bye"<<endl;
       cout << endl;
     }
 };
 
-Point Point::midPoint(Point &xn, Point &yn) {
-  float midX = (xn.x * yn.x) / 2;
-  float midY = (xn.y * yn.y) / 2;
-
-  std::cout << "Midpoint: (" << midX << ", " << midY << ")" << std::endl;
-  return Point(midX, midY);
-}
 int main() {
   Point x;
-  Point b(4.3, 65);
+  Point b(44, 65);
 
   cout << "Point a:" << endl;
-  Point a(3, 5);
+  Point a(22, 12);
   a.show();
 
   cout << "Point p:" << endl;
-  Point p(2, 2);
+  Point p(19, 43);
   cout<<a.dot(p)<<endl;
   
   x = p.midPoint(a, b);
@@ -77,8 +75,8 @@ int main() {
 
   cout << "Point x:" << endl;
   x.midPoint(p, a);
-
   x.show();
-
+  
   return 0;
+
 }
