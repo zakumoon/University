@@ -53,6 +53,8 @@ class Rectangle{
         void setLen(double l){
             len = l;
         }
+        void show(void);        
+
 
         //set wid and lens to whatever coming
         void fillAll(string ne , double w, double l){
@@ -60,8 +62,19 @@ class Rectangle{
             wid = w;
             len = l;
         }
+        ~Rectangle(){
+            n--;
+            cout<<"Count: " << count() <<endl;;
+            cout<<"Bye "<< getName() <<endl;
+            cout<<endl;
+        }
 
-     // pre add 1 wid
+        //return counting
+        static int count(){
+            return n;
+        }
+
+        // pre add 1 wid
         Rectangle& operator++() {
             ++wid;
             return *this;
@@ -83,21 +96,6 @@ class Rectangle{
                 len--;
             return temp;
         }
-        
-        void show(void);
-        //destroyer
-        ~Rectangle(){
-            n--;
-            cout<<"Count: " << count() <<endl;;
-            cout<<"Bye "<< getName() <<endl;
-            cout<<endl;
-        }
-
-        //return counting
-        static int count(){
-            return n;
-        }
-
 };
      
 

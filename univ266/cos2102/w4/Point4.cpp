@@ -10,6 +10,7 @@ class Point {
     Point() {
       x = 0;
       y = 0;
+      cout << "Constructor:" << endl;
     }
 
     void set(float xn, float yn) {
@@ -42,8 +43,7 @@ class Point {
       float midX = (xn.x + yn.x) / 2;
       float midY = (xn.y + yn.y) / 2;
 
-      Point midpoint(midX, midY);
-      return midpoint;
+      return Point(midX, midY);
     }
 
     void show() {
@@ -53,8 +53,7 @@ class Point {
     }
 
     ~Point() {
-      cout<<"Bye"<<endl;
-      cout << endl;
+      cout<<"Destroctor"<<endl;
     }
 };
 
@@ -69,14 +68,21 @@ int main() {
   cout << "Point p:" << endl;
   Point p(19, 43);
   cout<<a.dot(p)<<endl;
-  
-  x = p.midPoint(a, b);
   p.show();
+ 
+  cout << "Point Mid:"<< endl;
+  Point mid = x.midPoint(b, a);
+  mid.show();
 
-  cout << "Point x:" << endl;
-  x.midPoint(p, a);
+  cout << "Point X:" << endl;
+  x = p.midPoint(p, b);
   x.show();
   
+  cout << "After X:" << endl;
+  p.show();
+
+
+
   return 0;
 
 }
